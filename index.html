@@ -1,77 +1,123 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>✈ Travel Planner</title>
-        <link rel = "stylesheet" href = "style.css">
-    </head>
-    <body>
-        <nav>
-            <div class = "logo">YOUR TRAVEL PLANNER</div>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Make my Trip</a></li>
-                <li><a href="#">My Trips</a></li>
-                <li><a href="#">Login</a></li>
-            </ul>
-        </nav>
-        <section class="hero">
+<head>
+    <title>✈ Travel Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">YOUR TRAVEL PLANNER</div>
+    <ul>
+        <li><a href="#">Home</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
     <div class="hero-container">
 
-        <!-- LEFT SIDE -->
-        <div class="hero-left">
-            <h1>Plan Your Dream Trip</h1>
-            <p>Book Flights, Trains, Buses, Cabs, Hotels & curated holiday packages — all in one place.
-Compare prices, grab the best deals, and plan smarter.
-Travel stress-free with secure bookings, instant confirmations, and 24/7 support wherever you go.</p>
+        <h1>Plan Your Dream Trip</h1>
 
-            <!-- ADD THESE HERE -->
-            <div class="destinations">
-                <h2>Popular Destinations</h2>
+        <p>
+            Book Flights, Trains, Buses, Cabs, Hotels & curated holiday packages — all in one place.
+            Compare prices, grab the best deals, and plan smarter.
+            Travel stress-free with secure bookings, instant confirmations, and 24/7 support wherever you go.
+        </p>
 
-                <div class="cards">
-                    <div class="card goa">
-                        <h3>Goa</h3>
-                        <p>Beaches & Nightlife</p>
-                    </div>
-                    <div class="card manali">
-                        <h3>Manali</h3>
-                        <p>Mountains & snow</p>
-                    </div>
-                    <div class="card jaipur">
-                        <h3>Jaipur</h3>
-                        <p>Royal Heritage</p>
-                    </div>
+        <!-- Cards Section -->
+        <div class="cards">
+            <div class="card-track">
+
+                <div class="card goa">
+                    <h3>Goa</h3>
+                    <p>Beaches & Nightlife</p>
                 </div>
-            </div>
 
-            <div class="why-us">
-                <h2>Why Choose Us?</h2>
-                <div class="features">
-                    <div>Best Price Guarantee</div>
-                    <div>100+ Destinations</div>
-                    <div>Easy Booking</div>
+                <div class="card manali">
+                    <h3>Manali</h3>
+                    <p>Mountains & Snow</p>
                 </div>
-            </div>
 
+                <div class="card jaipur">
+                    <h3>Jaipur</h3>
+                    <p>Royal Heritage</p>
+                </div>
+
+                <div class="card kerala">
+                    <h3>Kerala</h3>
+                    <p>Backwaters & Nature</p>
+                </div>
+
+                <div class="card ladakh">
+                    <h3>Ladakh</h3>
+                    <p>Adventure & Landscapes</p>
+                </div>
+
+                <div class="card mumbai">
+                    <h3>Mumbai</h3>
+                    <p>City of Dreams</p>
+                </div>
+
+                <div class="card andaman">
+                    <h3>Andaman</h3>
+                    <p>Island Paradise</p>
+                </div>
+
+                <div class="card rishikesh">
+                    <h3>Rishikesh</h3>
+                    <p>Yoga & River Rafting</p>
+                </div>
+
+            </div>
         </div>
 
-        <!-- RIGHT SIDE -->
-        <div class="hero-right">
-            <div class="login-box">
+        <!-- Login Box -->
+        <div class="login-box">
+
+            <div id="loginForm">
                 <h2>Login</h2>
                 <input type="text" placeholder="Email">
                 <input type="password" placeholder="Password">
-                <input type="number" placeholder="Phone Number">
                 <button>Login</button>
+                <p>
+                    Don't have an account?
+                    <span onclick="showSignup()" style="cursor:pointer; color:#ffc107;">Sign Up</span>
+                </p>
             </div>
+
+            <div id="signupForm" style="display:none;">
+                <h2>Sign Up</h2>
+                <input type="text" placeholder="Full Name">
+                <input type="text" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button>Create Account</button>
+                <p>
+                    Already have an account?
+                    <span onclick="showLogin()" style="cursor:pointer; color:#ffc107;">Login</span>
+                </p>
+            </div>
+
         </div>
 
     </div>
 </section>
 
+<footer>
+    <p>2026 Travel Planner | Plan Smart. Travel Happy</p>
+</footer>
 
-        <footer>
-            <p>2026 Travel PLanner | Plan Smart. Travel Happy</p>
-        </footer>
-    </body>
+<script>
+function showSignup() {
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("signupForm").style.display = "block";
+}
+
+function showLogin() {
+    document.getElementById("signupForm").style.display = "none";
+    document.getElementById("loginForm").style.display = "block";
+}
+</script>
+
+</body>
 </html>
