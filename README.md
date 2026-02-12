@@ -104,8 +104,8 @@ Organized a multi-page website structure
 
 👩‍💻 Authors
 
-Rajeshwari Thapa
-Tanu 
+Rajeshwari Thapa, 
+Tanu,  
 Riya Sinha
 
 🔗 GitHub links: 
@@ -115,3 +115,4 @@ https://github.com/414tanu
 🔗 LinkedIn profiles: 
 https://www.linkedin.com/in/rajeshwari-thapa-278152297/
 https://www.linkedin.com/in/tanu414/
+
