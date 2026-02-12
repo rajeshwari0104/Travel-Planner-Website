@@ -133,7 +133,7 @@ nav ul li a:hover {
 /* ---------------- LOGIN BOX ---------------- */
 
 .login-box {
-    background: rgb(77, 75, 75);
+    background: rgba(255, 255, 255, 0.15);
     padding: 40px;
     border-radius: 15px;
     backdrop-filter: blur(10px);
@@ -179,3 +179,88 @@ footer {
     text-align: center;
     padding: 20px;
 }
+
+/* -------- BOOKING PAGE -------- */
+
+.booking-hero {
+    min-height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1502920917128-1aa500764cbd');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.booking-hero h1 {
+    font-size: 42px;
+    margin-bottom: 30px;
+}
+
+.booking-tabs {
+    margin-bottom: 25px;
+}
+
+.booking-tabs button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.booking-tabs .active {
+    background: #ffc107;
+}
+
+.booking-form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.booking-form input {
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    width: 200px;
+}
+
+.booking-form button {
+    padding: 12px 20px;
+    background: #ffc107;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.featured {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.deal-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.deal-card {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.deal-card:hover {
+    transform: translateY(-5px);
+}
+
