@@ -1,0 +1,104 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navbar */
+nav {
+    height: 70px;
+    background: #0a1f44;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Background Section */
+.service-section {
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('travel-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title */
+#serviceTitle {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+/* Form Container */
+#bookingForm {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 700px;
+    display: grid;
+    gap: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Inputs */
+#bookingForm input,
+#bookingForm select {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+#bookingForm input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,123,255,0.4);
+}
+
+/* Button */
+#bookingForm button {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#bookingForm button:hover {
+    background: #0056b3;
+}
+body[data-type="flights"] #bookingForm button {
+    background: #007bff;
+}
+
+body[data-type="hotels"] #bookingForm button {
+    background: #28a745;
+}
+
+body[data-type="trains"] #bookingForm button {
+    background: #ff9800;
+}
+
+body[data-type="buses"] #bookingForm button {
+    background: #9c27b0;
+}
+
+body[data-type="cabs"] #bookingForm button {
+    background: #e91e63;
+}
+
+

@@ -4,14 +4,63 @@
     <title>✈ Travel Planner</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<script>
+function isValidEmail(email) {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+}
+
+function isStrongPassword(password) {
+    const pattern =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+    return pattern.test(password);
+}
+
+function handleSignup() {
+
+    const name = document.querySelector("#signupForm input:nth-of-type(1)").value;
+    const email = document.querySelector("#signupForm input:nth-of-type(2)").value;
+    const password = document.querySelector("#signupForm input:nth-of-type(3)").value;
+
+    const error = document.getElementById("signupError");
+
+    if (!isValidEmail(email)) {
+        error.innerText = "Enter a valid email address.";
+        return;
+    }
+
+    if (!isStrongPassword(password)) {
+        error.innerText = "Password must be strong (8+ chars, uppercase, lowercase, number, special char).";
+        return;
+    }
+
+    // Store user data
+    const userData = {
+        fullName: name,
+        email: email,
+        password: password
+    };
+
+    localStorage.setItem("userAccount", JSON.stringify(userData));
+
+    error.innerText = "";
+
+    alert("Account created successfully!");
+
+    // Redirect to profile page
+    window.location.href = "profile.html";
+}
+</script>
+
 
 <body>
 
 <nav>
     <div class="logo">YOUR TRAVEL PLANNER</div>
     <ul>
-        <li><a href="#">Home</a></li>
+        <li><button class="nav-btn" onclick="openModal()">Login / Sign Up</button></li>
     </ul>
+
 </nav>
 
 <section class="hero">
@@ -72,43 +121,95 @@
             </div>
         </div>
 
-        <!-- Login Box -->
-        <div class="login-box">
+    </div>
+</section>
+<!-- Modal -->
+<div id="authModal" class="modal">
 
-            <div id="loginForm">
-                <h2>Login</h2>
-                <input type="text" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <button onclick="window.location.href='booking.html'">Login</button>
+    <div class="login-box">
 
-                <p>
-                    Don't have an account?
-                    <span onclick="showSignup()" style="cursor:pointer; color:#ffc107;">Sign Up</span>
-                </p>
-            </div>
+        <span class="close-btn" onclick="closeModal()">&times;</span>
 
-            <div id="signupForm" style="display:none;">
-                <h2>Sign Up</h2>
-                <input type="text" placeholder="Full Name">
-                <input type="text" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <button>Create Account</button>
-                <p>
-                    Already have an account?
-                    <span onclick="showLogin()" style="cursor:pointer; color:#ffc107;">Login</span>
-                </p>
-            </div>
+        <div id="loginForm">
+            <h2>Login</h2>
+            <input type="text" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <p id="loginError" style="color:red; font-size:14px;"></p>
 
+            <button onclick="validateLogin()">Login</button>
+
+
+            <p>
+                Don't have an account?
+                <span onclick="showSignup()" style="cursor:pointer; color:#ffc107;">Sign Up</span>
+            </p>
+        </div>
+
+        <div id="signupForm" style="display:none;">
+            <h2>Sign Up</h2>
+            <input type="text" placeholder="Full Name">
+            <input type="text" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <p id="signupError" style="color:red; font-size:14px;"></p>
+
+            <button onclick="handleSignup()">Create Account</button>
+
+
+            <p>
+                Already have an account?
+                <span onclick="showLogin()" style="cursor:pointer; color:#ffc107;">Login</span>
+            </p>
         </div>
 
     </div>
-</section>
+</div>
 
-<footer>
-    <p>2026 Travel Planner | Plan Smart. Travel Happy</p>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-section">
+            <h3>Travel Planner</h3>
+            <p>
+                Your one-stop destination for booking flights, hotels, buses, trains and curated holiday packages.
+                Travel smart. Travel happy.
+            </p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">Bookings</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <p>Email: support@travelplanner.com</p>
+            <p>Phone: +91 98765 43210</p>
+            <p>Available 24/7</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Travel Planner | Plan Smart. Travel Happy.</p>
+    </div>
 </footer>
 
+
 <script>
+function openModal() {
+    document.getElementById("authModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("authModal").style.display = "none";
+}
+
 function showSignup() {
     document.getElementById("loginForm").style.display = "none";
     document.getElementById("signupForm").style.display = "block";
@@ -119,6 +220,7 @@ function showLogin() {
     document.getElementById("loginForm").style.display = "block";
 }
 </script>
+
 
 </body>
 </html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Profile | Travel Planner</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">YOUR TRAVEL PLANNER</div>
+    <ul>
+        <li><a href="booking.html">Home</a></li>
+        <li><a href="index.html">Logout</a></li>
+    </ul>
+</nav>
+
+<section class="profile-section">
+
+    <div class="profile-header">
+        <h1>My Profile</h1>
+        <button id="editBtn" onclick="toggleEdit()">Edit Profile</button>
+    </div>
+
+    <div class="profile-container">
+
+        <!-- Profile Picture -->
+         <!-- <div class="form-group">
+    <label>Profile Picture</label>
+    <input type="file" id="profilePic" hidden>
+    <button type="button" onclick="document.getElementById('profilePic').click()">
+        Upload Photo
+    </button>
+</div> -->
+        <!-- <div class="profile-left">
+            <img id="profilePreview" src="https://via.placeholder.com/150" alt="Profile Picture">
+            <input type="file" id="profileImage" accept="image/*" onchange="previewImage(event)" disabled>
+        </div> -->
+
+        <div class="profile-left">
+    <img id="profilePreview" 
+         src="https://via.placeholder.com/150" 
+         alt="Profile Picture">
+
+    <input type="file" 
+           id="profileImage" 
+           accept="image/*" 
+           onchange="previewImage(event)" 
+           hidden>
+
+    <button type="button" 
+            id="uploadBtn" 
+            onclick="document.getElementById('profileImage').click()" 
+            disabled>
+        Upload Photo
+    </button>
+</div>
+
+
+        <!-- Profile Form -->
+        <form id="profileForm" class="profile-form" onsubmit="saveProfile(event)">
+
+            <div class="form-grid">
+
+                <input type="text" id="fullName" placeholder="Full Name" disabled required>
+                <input type="email" id="email" placeholder="Email" disabled required>
+                <input type="tel" id="phone" placeholder="Phone Number" disabled required>
+
+                <input type="date" id="dob" disabled required>
+                <select id="gender" disabled required>
+                    <option value="">Select Gender</option>
+                    <option>Female</option>
+                    <option>Male</option>
+                    <option>Other</option>
+                </select>
+
+                <input type="text" id="address" placeholder="Address" disabled required>
+                <input type="text" id="city" placeholder="City" disabled required>
+                <input type="text" id="country" placeholder="Country" disabled required>
+
+            </div>
+
+            <p id="errorMsg" class="error"></p>
+
+            <button type="submit" id="saveBtn" class="save-btn" disabled>Save Changes</button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const accountData = localStorage.getItem("userAccount");
+    const profileData = localStorage.getItem("userProfile");
+
+    const fullName = document.getElementById("fullName");
+    const email = document.getElementById("email");
+    const phone = document.getElementById("phone");
+    const dob = document.getElementById("dob");
+    const gender = document.getElementById("gender");
+    const address = document.getElementById("address");
+    const city = document.getElementById("city");
+    const country = document.getElementById("country");
+    const profilePreview = document.getElementById("profilePreview");
+
+    if (accountData) {
+        const account = JSON.parse(accountData);
+        fullName.value = account.fullName || "";
+        email.value = account.email || "";
+    }
+
+    if (profileData) {
+        const savedProfile = JSON.parse(profileData);
+
+        phone.value = savedProfile.phone || "";
+        dob.value = savedProfile.dob || "";
+        gender.value = savedProfile.gender || "";
+        address.value = savedProfile.address || "";
+        city.value = savedProfile.city || "";
+        country.value = savedProfile.country || "";
+
+        if (savedProfile.image && savedProfile.image.length < 500000) {
+            profilePreview.src = savedProfile.image;
+        }
+    }
+});
+
+function toggleEdit() {
+    const formElements = document.querySelectorAll("#profileForm input, #profileForm select");
+    const saveBtn = document.getElementById("saveBtn");
+    const uploadBtn = document.getElementById("uploadBtn");
+
+    formElements.forEach(el => el.disabled = !el.disabled);
+    saveBtn.disabled = !saveBtn.disabled;
+    uploadBtn.disabled = !uploadBtn.disabled;
+}
+
+function previewImage(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    if (file.size > 1024 * 1024) {
+        alert("Image too large. Please upload under 1MB.");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        document.getElementById("profilePreview").src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
+
+function saveProfile(event) {
+    event.preventDefault();
+
+    const dobValue = document.getElementById("dob").value;
+    const errorMsg = document.getElementById("errorMsg");
+
+    if (calculateAge(dobValue) < 18) {
+        errorMsg.innerText = "You must be at least 18 years old.";
+        return;
+    }
+
+    const profileData = {
+        fullName: document.getElementById("fullName").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        dob: dobValue,
+        gender: document.getElementById("gender").value,
+        address: document.getElementById("address").value,
+        city: document.getElementById("city").value,
+        country: document.getElementById("country").value,
+        image: document.getElementById("profilePreview").src
+    };
+
+    localStorage.setItem("userProfile", JSON.stringify(profileData));
+
+    errorMsg.innerText = "";
+    alert("Profile Updated Successfully!");
+
+    toggleEdit();
+}
+
+function calculateAge(dob) {
+    if (!dob) return 0;
+
+    const birthDate = new Date(dob);
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const month = today.getMonth() - birthDate.getMonth();
+
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    return age;
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,377 @@
+/* -------- BOOKING PAGE -------- */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f7fb;
+}
+/* -------- NAVBAR -------- */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background: linear-gradient(135deg, #7097d0,#7097d0 );
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+nav .logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+/* Hover underline animation */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #ffc107;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #ffc107;
+}
+
+/* -------- HERO SECTION -------- */
+
+.booking-hero {
+    min-height: 65vh;
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('https://images.unsplash.com/photo-1502920917128-1aa500764cbd');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.booking-hero h1 {
+    font-size: 45px;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+/* -------- ICON TABS -------- */
+
+.booking-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.tab-btn {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    width: 85px;
+    height: 85px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: white;
+    font-size: 13px;
+    transition: 0.3s ease;
+}
+
+.tab-btn i {
+    font-size: 24px;
+}
+
+.tab-btn:hover {
+    background: #ffc107;
+    color: black;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* -------- BOOKING FORM -------- */
+
+.booking-form {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.booking-form input {
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 200px;
+    transition: 0.3s ease;
+}
+
+.booking-form input:focus {
+    border-color: #ffc107;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255,193,7,0.4);
+}
+
+.booking-form button {
+    padding: 14px 25px;
+    background: #ffc107;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.booking-form button:hover {
+    background: #ffb300;
+    transform: scale(1.05);
+}
+
+/* -------- FEATURED SECTION -------- */
+
+.featured {
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.featured h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.deal-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.deal-card {
+    background: white;
+    color: black;
+    padding: 25px;
+    border-radius: 15px;
+    width: 260px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+}
+
+.deal-card h3 {
+    margin-bottom: 10px;
+}
+
+.deal-card p {
+    color: gray;
+    font-size: 14px;
+}
+
+.deal-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* -------- RESPONSIVE -------- */
+
+@media (max-width: 768px) {
+    .booking-form {
+        width: 95%;
+    }
+
+    .booking-form input {
+        width: 100%;
+    }
+
+    .tab-btn {
+        width: 75px;
+        height: 75px;
+    }
+}
+/* -------- FEATURED SECTION -------- */
+
+.featured {
+    padding: 80px 20px;
+    text-align: center;
+    background: #f4f7fb;
+}
+
+.featured h2 {
+    font-size: 34px;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.deal-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Card Base Style */
+
+.deal-card {
+    position: relative;
+    width: 300px;
+    height: 220px;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    transition: 0.4s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Overlay */
+.deal-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.2));
+}
+
+/* Text Content */
+
+.deal-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    z-index: 2;
+}
+
+.deal-info h3 {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.deal-info p {
+    font-weight: bold;
+    color: #ffc107;
+    font-size: 16px;
+}
+
+/* Hover Effect */
+
+.deal-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* -------- Background Images -------- */
+
+.goa-deal {
+    background-image: url('https://images.unsplash.com/photo-1587922546307-776227941871');
+}
+
+.manali-deal {
+    background-image: url('https://images.unsplash.com/photo-1626621341517-bbf3d9990a23');
+}
+
+.kerala-deal {
+    background-image: url('https://explorehorizons.com/wp-content/uploads/revslider/kerala-backwaters-.jpg');
+}
+
+/* -------- Responsive -------- */
+
+@media (max-width: 768px) {
+    .deal-card {
+        width: 90%;
+    }
+}
+.faq-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* 2 cards per row */
+    gap: 25px;
+}
+
+
+/* .faq-item {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.faq-item:hover {
+    transform: translateY(-5px);
+}
+
+.faq-item h3 {
+    margin-bottom: 10px;
+    color: #ff9800;
+}
+
+.faq-item p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+} */
+
+.faq-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.faq-item:hover {
+    transform: translateY(-5px);
+}
+
+.faq-item h3 {
+    margin-bottom: 10px;
+    color: #ff9800;
+}
+
+.faq-item p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+}
+@media (max-width: 768px) {
+    .faq-container {
+        grid-template-columns: 1fr;
+    }
+}

@@ -2,17 +2,33 @@
 <html>
 <head>
     <title>Booking | Travel Planner</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="booking.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
+<script>
+function logout() {
+    // Clear login session if stored
+    localStorage.removeItem("loggedInUser");
+
+    // Redirect to login page
+    window.location.href = "index.html";
+}
+</script>
+
+
 
 <body>
 
 <nav>
     <div class="logo">YOUR TRAVEL PLANNER</div>
     <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">My Trips</a></li>
-        <li><a href="#">Logout</a></li>
+        <!-- <li><a href="index.html">Home</a></li> -->
+        <li><a href="profile.html">My Profile</a></li>
+
+        <li><a href="#" onclick="logout()">Logout</a></li>
+
+
     </ul>
 </nav>
 
@@ -21,44 +37,164 @@
     <h1>Book Your Journey</h1>
 
     <!-- Booking Tabs -->
-    <div class="booking-tabs">
-        <button class="active">Flights</button>
-        <button>Hotels</button>
-        <button>Trains</button>
-        <button>Buses</button>
-    </div>
+     <!-- <button class="tab-btn" onclick="openBooking('flights')">Flights</button>
+<button class="tab-btn" onclick="openBooking('hotels')">Hotels</button>
+<button class="tab-btn" onclick="openBooking('trains')">Trains</button>
+<button class="tab-btn" onclick="openBooking('buses')">Buses</button>
+<button class="tab-btn" onclick="openBooking('cabs')">Cabs</button> -->
 
-    <!-- Booking Form -->
-    <div class="booking-form">
-        <input type="text" placeholder="From">
-        <input type="text" placeholder="To">
-        <input type="date">
-        <input type="number" placeholder="Passengers">
-        <button>Search</button>
+<script>
+function openBooking(type) {
+    localStorage.setItem("bookingType", type);
+    window.location.href = "service.html";
+}
+</script>
+
+    <div class="booking-tabs">
+
+    <button class="tab-btn" onclick="changeServices('flights')" >
+        <i class="fa-solid fa-plane"></i>
+        <span>Flights</span>
+    </button>
+
+    <button class="tab-btn" onclick="changeServices('hotels')">
+        <i class="fa-solid fa-hotel"></i>
+        <span>Hotels</span>
+    </button>
+
+    <button class="tab-btn" onclick="changeSerices('trains')">
+        <i class="fa-solid fa-train"></i>
+        <span>Trains</span>
+    </button>
+
+    <button class="tab-btn" onclick="changeServices('buses')">
+        <i class="fa-solid fa-bus"></i>
+        <span>Buses</span>
+    </button>
+
+    <button class="tab-btn" onclick="changeServices('cabs')">
+        <i class="fa-solid fa-car"></i>
+        <span>Cabs</span>
+    </button>
     </div>
+    <div id=""synamicForm"></div>
+    <div id="dynamicForm" class="booking-form"></div>
+
+    <script>
+function changeService(type) {
+
+    const form = document.getElementById("dynamicForm");
+
+    if(type === "flights") {
+        form.innerHTML = `
+            <input type="text" placeholder="From">
+            <input type="text" placeholder="To">
+            <input type="date">
+            <input type="number" placeholder="Passengers" min="1">
+            <button>Search Flights</button>
+        `;
+    }
+
+    else if(type === "hotels") {
+        form.innerHTML = `
+            <input type="text" placeholder="City">
+            <input type="date">
+            <input type="date">
+            <input type="number" placeholder="Guests" min="1">
+            <button>Search Hotels</button>
+        `;
+    }
+
+    else if(type === "trains") {
+        form.innerHTML = `
+            <input type="text" placeholder="From">
+            <input type="text" placeholder="To">
+            <input type="date">
+            <button>Search Trains</button>
+        `;
+    }
+
+    else if(type === "buses") {
+        form.innerHTML = `
+            <input type="text" placeholder="From">
+            <input type="text" placeholder="To">
+            <input type="date">
+            <button>Search Buses</button>
+        `;
+    }
+
+    else if(type === "cabs") {
+        form.innerHTML = `
+            <input type="text" placeholder="Pickup Location">
+            <input type="text" placeholder="Drop Location">
+            <input type="datetime-local">
+            <button>Search Cabs</button>
+        `;
+    }
+}
+
+// Load flights by default
+window.onload = function() {
+    changeService('flights');
+}
+</script>
+
+
 
 </section>
 
 <section class="featured">
-    <h2>🔥 Popular Deals</h2>
+    <h2>❓ Frequently Asked Questions</h2>
 
-    <div class="deal-cards">
-        <div class="deal-card">
-            <h3>Delhi → Goa</h3>
-            <p>Starting ₹4,999</p>
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <h3>How do I book a flight or hotel?</h3>
+            <p>
+                Select the service (Flights, Hotels, Trains, etc.), enter your departure and destination details,
+                choose your date and number of passengers, then click Search to view available options.
+            </p>
         </div>
 
-        <div class="deal-card">
-            <h3>Mumbai → Manali</h3>
-            <p>Starting ₹6,499</p>
+        <div class="faq-item">
+            <h3>How do I use the travel chatbot?</h3>
+            <p>
+                Simply type your query like “Find flights from Delhi to Goa under ₹5000”
+                or “Best hotels in Manali for couples”. The chatbot will suggest suitable options instantly.
+            </p>
         </div>
 
-        <div class="deal-card">
-            <h3>Bangalore → Kerala</h3>
-            <p>Starting ₹5,299</p>
+        <div class="faq-item">
+            <h3>What type of prompts can I give?</h3>
+            <p>
+                You can ask things like:
+                “Cheapest flight this weekend”,
+                “Family-friendly hotels in Kerala”,
+                “Buses from Mumbai to Pune tomorrow”,
+                or even “Suggest a 3-day trip under ₹10,000”.
+            </p>
         </div>
+
+        <div class="faq-item">
+            <h3>Is my booking secure?</h3>
+            <p>
+                Yes. All transactions are encrypted and your payment details are processed securely.
+                You’ll receive instant booking confirmation via email.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I cancel or modify my booking?</h3>
+            <p>
+                Yes. Go to “My Trips” in the navigation bar to manage, cancel,
+                or reschedule your booking based on the service provider’s policy.
+            </p>
+        </div>
+
     </div>
 </section>
+
+
 
 <footer>
     <p>2026 Travel Planner | Plan Smart. Travel Happy</p>
